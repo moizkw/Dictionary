@@ -1,9 +1,8 @@
 import json
 from difflib import get_close_matches
 
-data = json.load(open("dictionary_data.json"))
-
 def translate(word):
+    data = json.load(open("dictionary_data.json"))
     word = word.lower()
     if word in data:
         return data[word]
@@ -23,13 +22,14 @@ def translate(word):
     else:
         print("Invalid Input")
 
-x = "y"
-while x == "y":
-    word = input("\nEnter the word you want to search: ")
-    output = translate(word)
-    if type(output) == list:
-        for item in output:
-            print(item)
-    else:
-        print(output)
-    x = input("\nEnter 'y' to seach again or press any other key to end session: ") 
+if __name__ == "__main__":
+    x = "y"
+    while x == "y":
+        word = input("\nEnter the word you want to search: ")
+        output = translate(word)
+        if type(output) == list:
+            for item in output:
+                print(item)
+        else:
+            print(output)
+        x = input("\nEnter 'y' to seach again or press any other key to end session: ") 
